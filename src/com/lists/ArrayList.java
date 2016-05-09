@@ -98,6 +98,11 @@ public class ArrayList implements List {
         return new RandomIterator();
     }
 
+    @Override
+    public Iterator randomIteratorAll() {
+        return new RandomIteratorAll();
+    }
+
     private void resize() {
         if (size == array.length) {
             String[] arrayNew = new String[array.length * 2];
@@ -154,7 +159,6 @@ public class ArrayList implements List {
         @Override
         public Object next() {
             if (current == 0) {
-                current--;
                 return tempArray[current + 1];
             }
 
@@ -172,7 +176,7 @@ public class ArrayList implements List {
             }
         }
 
-        public void removeArray(int index) {
+        private void removeArray(int index) {
             for (int i = index; i < current - 1; i++) {
                 tempArray[i] = tempArray[i + 1];
             }
@@ -180,4 +184,27 @@ public class ArrayList implements List {
             current--;
         }
     }
+
+    private class RandomIteratorAll implements Iterator {
+        private int current = size, index;
+        private String element;
+
+        @Override
+        public boolean hasNext() {
+            if (current < 1) {
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public Object next() {
+            Random random = new Random();
+            index = random.nextInt(size - 1);
+            element = array[index];
+            current--;
+            return element;
+        }
+    }
+
 }

@@ -30,5 +30,8 @@ public interface List {
 
     Iterator randomIterator();
 
+    Iterator randomIteratorAll();
+
+
 
 }

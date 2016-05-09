@@ -35,8 +35,19 @@ public class MainList {
             System.out.println(counter + ": Element:" + bit.next());
             counter++;
         }
+
+        System.out.println("-----------------------------------------------");
+        System.out.println("Random all iteration");
+        Iterator rit = list.randomIteratorAll();
+        counter=0;
+        while (rit.hasNext()) {
+            System.out.println(counter + ": Element:" + rit.next());
+            counter++;
+        }
+
         System.out.println("-----------------------------------------------");
         System.out.println("Forward iteration");
+
 
         it = list.listIterator();
         counter = 0;
